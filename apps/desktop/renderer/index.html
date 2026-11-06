@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MOMIYU</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="journey.css">
+</head>
+<body>
+<dialog id="hatch-celebration" aria-labelledby="hatch-title">
+  <div class="hatch-glow"><img id="hatch-portrait" alt="刚孵化的幼体" hidden></div>
+  <p class="eyebrow">我们一起等到了这一天</p>
+  <h2 id="hatch-title">它破壳啦！</h2>
+  <p id="hatch-copy"></p>
+  <button id="hatch-continue" class="primary" type="button">去成长手记看看</button>
+</dialog>
+<aside class="sidebar">
+  <div class="brand"><img class="brand-icon" src="../assets/brand/momiyu.png" alt=""><strong>MOMIYU</strong></div>
+  <p class="sidebar-note">把普通日子，过成共同的经历。</p>
+  <nav aria-label="主要页面">
+    <button data-page="home" class="selected">小小的家 <span>01</span></button>
+    <button data-page="chat">说说话 <span>02</span></button>
+    <button data-page="experiences">一起经历 <span>03</span></button>
+    <button data-page="growth">成长手记 <span>04</span></button>
+    <button data-page="abilities">技能图鉴 <span>05</span></button>
+    <button data-page="settings">相处设置 <span>06</span></button>
+  </nav>
+  <div class="sidebar-bottom"><span class="dot"></span><span id="connection">本地陪伴</span><small>WINDOWS · EARLY DEMO</small></div>
+</aside>
+<main>
+  <header><span id="breadcrumb">我们的日常 / 小小的家</span><small id="profile-mode"></small><button id="open-accounts" data-goto="accounts" class="subtle" hidden>账号管理</button><button id="quit" class="subtle">退出 MOMIYU</button></header>
+  <section id="accounts" class="page">
+    <div class="heading"><h1 id="accounts-heading">登录 MOMIYU</h1><p>每个账号都有自己的宠物、成长记录和相处设置，保存在这台电脑上。</p></div>
+    <article id="account-picker" class="card">
+      <h2>本机账号</h2><div id="account-list"></div>
+      <div class="account-actions">
+        <button id="open-register" class="primary" type="button">注册新账号</button>
+        <button id="sign-out" class="subtle" type="button" hidden>退出当前账号</button>
+      </div>
+    </article>
+    <form id="login-form" class="card" hidden>
+        <h2 id="login-heading"></h2>
+        <p id="login-hint" hidden>这个账号已有本地档案。设置一次密码，就能继续原来的成长记录。</p>
+        <label class="field">密码<input id="login-password" type="password" maxlength="128" required autocomplete="current-password"></label>
+        <label id="login-confirm-field" class="field" hidden>确认密码<input id="login-confirmation" type="password" maxlength="128" autocomplete="new-password"></label>
+        <label><input id="login-remember" type="checkbox"> 在这台电脑上记住此账号</label>
+        <div class="account-actions"><button id="login-submit" class="primary" type="submit">登录</button><button id="login-back" class="subtle" type="button">返回账号列表</button></div>
+    </form>
+    <form id="account-form" class="card" hidden>
+      <h2>注册本地账号</h2>
+      <label class="field">账号名称<input id="account-name" maxlength="40" required autocomplete="off" placeholder="给你的账号起个名字"></label>
+      <label class="field">密码<input id="account-password" type="password" minlength="8" maxlength="128" required autocomplete="new-password" placeholder="至少 8 个字符"></label>
+      <label class="field">确认密码<input id="account-confirmation" type="password" minlength="8" maxlength="128" required autocomplete="new-password"></label>
+      <label><input id="register-remember" type="checkbox"> 在这台电脑上记住此账号</label>
+      <div class="account-actions"><button id="create-account" class="primary" type="submit">注册并去选蛋</button><button id="register-back" class="subtle" type="button">返回账号列表</button></div>
+    </form>
+  </section>
+  <section id="home" class="page active">
+    <div class="heading"><p class="eyebrow">A LITTLE LIFE, BESIDE YOU</p><h1>今天，也在你身边。</h1><p>聊一点新鲜事，或者安安静静待一会儿。</p></div>
+    <div class="home-grid">
+      <div class="pet-room"><span class="room-tag" id="pet-status">安静陪伴中</span><canvas id="pet-canvas" width="700" height="540" aria-label="点击向宠物打招呼" tabindex="0"></canvas><div class="pet-caption"><h2 id="pet-name">MOMIYU</h2><p id="pet-speech">嗨，我在这里。</p></div><span class="sample-label">临时示例形象</span></div>
+      <div class="home-side"><article class="card"><p class="eyebrow">OUR LITTLE MOMENTS</p><h2>日子慢慢积累</h2><div class="metrics"><div><strong id="record-count">0</strong><span>保存的片段</span></div><div><strong id="analysis-count">0</strong><span>整理的时刻</span></div></div><p>你可以随时查看、删除这些片段，也可以只让它们留在本机。</p><button data-goto="experiences" class="text-button">看看一起经历的事 ↗</button></article><article class="card rest-card"><span class="moon">☾</span><h2>累了，就小睡一会儿</h2><p>有获准分析的新经历时顺便整理；没有，也能安心打盹。</p><button id="rest" class="primary">打个小盹</button><button id="greet" class="subtle">打个招呼</button></article></div>
+    </div>
+    <p class="quiet-note">这是第一版可运行体验。从获准的片段中学习；在成长手记查看成长，在技能图鉴选择技能和查看成果。</p>
+  </section>
+  <section id="chat" class="page"><div class="heading"><p class="eyebrow">JUST BETWEEN US</p><h1>想说什么，都可以。</h1><p id="chat-mode">模型聊天尚未开启；当前是本地回应。</p></div><div id="messages" class="messages" aria-live="polite"></div><form id="chat-form" class="composer"><label class="sr-only" for="chat-input">消息</label><textarea id="chat-input" maxlength="4000" placeholder="今天发生了什么？" rows="2" required></textarea><button class="primary" type="submit">告诉它</button></form><p class="quiet-note">Enter 发送，Shift+Enter 换行。只保存已发送文字，不采集草稿。</p></section>
+  <section id="experiences" class="page"><div class="heading"><p class="eyebrow">LITTLE PIECES OF LIFE</p><h1>一起经历的事。</h1><p>看看它收下了哪些经历，还有哪些正在等下一次整理。</p></div><article class="card"><h2>经历整理进度</h2><p id="analysis-status"></p><div id="analysis-coverage"></div></article><form id="note-form" class="card"><label for="note-input">留下一段经历</label><textarea id="note-input" maxlength="4000" rows="3" placeholder="做了什么、怎么尝试、后来发生了什么……" required></textarea><button class="primary" type="submit">收进经历</button><small id="note-permission"></small></form><article class="card"><h2>让它陪你观察一份文件</h2><p>开启“观察选定文件”后，选择一份不超过 32KB 的 UTF-8 文本。只记录该文件的保存版本，不扫描文件夹或读取未保存输入。</p><button id="choose-file" class="primary">选择要观察的文件</button><div id="watched-files"></div></article><div id="observations" class="records"></div></section>
+  <section id="growth" class="page"><div class="heading"><p class="eyebrow">GROWING, AT OUR OWN PACE</p><h1>成长，有迹可循。</h1><p>睡眠后看看它记住了什么、练习了什么。当前技能工具可读取获准的本地经历并生成结果文件；联网检索等工具仍待接入。</p></div><article class="card"><h2>一路长成的模样</h2><p>看看最初的它，和每一次真正留下来的变化。</p><div id="appearance-history"></div></article><article class="card"><h2>它慢慢记住的事</h2><div id="memories"></div></article><button class="text-button" data-goto="abilities">去技能图鉴，看看它学会了什么 →</button><div id="jobs" class="records"></div></section>
+  <section id="abilities" class="page"><div class="heading"><p class="eyebrow">A LITTLE MAGIC, LEARNED TOGETHER</p><h1>这次，让它来帮忙。</h1><p>选择已经学会的技能，告诉它这次想做什么。</p></div><p id="skill-connection-note" class="quiet-note"></p><button class="subtle" data-goto="settings">查看模型设置</button><h2>已经学会的技能</h2><div id="skills" class="records"></div><details class="card"><summary id="skill-candidate-summary">正在练习的方法</summary><p class="quiet-note">这些还不是已获得的技能，需要后续核对和实际试用。</p><div id="skill-candidates" class="records"></div></details><h2>技能任务与成果</h2><div id="tasks" class="records"></div></section>
+  <section id="settings" class="page"><div class="heading"><p class="eyebrow">A COMFORTABLE DISTANCE</p><h1>按你的方式相处。</h1><p>保存到本机和发送给模型，是两件分别决定的事。</p></div><div class="settings-grid">
+    <article class="card"><h2>桌宠的大小</h2><p>拖动滑块，找到舒服的大小；下次启动也会记得。</p><label class="field" for="pet-size">显示大小 <output id="pet-size-label">100%</output><input id="pet-size" type="range" min="60" max="160" step="5" value="100"></label><button id="reset-pet-size" class="subtle">恢复默认大小</button></article><article class="card"><h2>自动小睡</h2><p>默认休息时段为 23:00–07:00，也会在白天空闲时打盹。你可以调整休息时段。聊天和任务优先，只有待处理材料符合模型发送设置时才会开始整理。</p><p id="nap-status"></p><form id="auto-nap-form"><label class="toggle"><span>跟随电脑使用作息<small>根据近期较长的锁屏与待机间隔调整；观察不足时使用默认时段</small></span><input id="adaptive-nap-enabled" type="checkbox"></label><label class="toggle"><span>允许自然打盹</span><input id="natural-nap-enabled" type="checkbox"></label><label class="toggle"><span>使用指定休息时段</span><input id="auto-nap-enabled" type="checkbox"></label><label class="field">开始时间<input id="auto-nap-start" type="time"></label><label class="field">结束时间<input id="auto-nap-end" type="time"></label><button class="subtle" type="submit">保存休息设置</button></form></article><article class="card"><h2>留在本机的内容</h2><label class="toggle"><span>保存宠物内聊天<small>从你开启之后开始保存已发送的消息</small></span><input type="checkbox" data-setting="saveChat"></label><label class="toggle"><span>保存主动提供的经历<small>仅保存你点击“收进经历”的内容</small></span><input type="checkbox" data-setting="saveNotes"></label><label class="toggle"><span>观察选定文件的保存变化<small>仅限你逐个选定的 txt / md / csv 文件</small></span><input type="checkbox" data-setting="saveFiles"></label><label class="field">给它一个别名<input id="alias" maxlength="40" placeholder="MOMIYU"></label><button id="save-alias" class="subtle">保存别名</button></article>
+    <article class="card"><h2>交给模型的内容</h2><div id="chatgpt-binding" hidden><h3>ChatGPT 账号绑定</h3><p id="chatgpt-binding-status"></p><button id="bind-chatgpt" class="subtle" type="button">Continue with ChatGPT</button><button id="unbind-chatgpt" class="subtle" type="button" hidden>解除绑定</button><button id="chatgpt-usage-link" class="subtle" type="button">在 ChatGPT 中查看用量</button><p>绑定后，聊天、小睡、成长、技能和生图走同一个 Codex 账号。首次绑定会打开浏览器授权。</p><h4>MOMIYU 本地用量</h4><p id="chatgpt-usage-totals"></p><div id="chatgpt-usage-records"></div><button id="chatgpt-usage-more" class="subtle" type="button" hidden>查看更多历史</button></div><label class="toggle"><span>开启模型调用<small>开启后，主动聊天或整理可能消耗代理额度</small></span><input type="checkbox" data-setting="modelEnabled"></label><label class="toggle"><span>允许发送宠物内聊天</span><input type="checkbox" data-setting="sendChat"></label><label class="toggle"><span>允许发送主动提供的经历</span><input type="checkbox" data-setting="sendNotes"></label><label class="toggle"><span>允许发送选定文件的内容</span><input type="checkbox" data-setting="sendFiles"></label><label class="toggle"><span>允许小睡分析使用原始按键</span><input type="checkbox" data-setting="sendRawInput"></label><label class="toggle"><span>允许睡眠分析发送系统截图<small>每轮最多两张，与本地截图开关独立</small></span><input type="checkbox" data-setting="sendScreenshots"></label><label class="toggle"><span>允许成长时生成新形象<small>每次成长最多一张图集，使用 gpt-image-1.5；会额外消耗生图额度，不自动重试</small></span><input type="checkbox" data-setting="imageGeneration"></label><label class="field">调试模型<select id="model"><option>gpt-5.6-luna</option><option>gpt-5.6-sol</option><option>gpt-5.6-terra</option></select></label><button id="choose-proxy" class="subtle">选择现有代理配置</button><button id="check-connection" class="subtle">检查模型连接</button><p id="model-connection" class="quiet-note">尚未检查连接</p><p id="proxy-path" class="quiet-note">尚未选择配置</p><p class="quiet-note">绑定后，模型请求会直接使用该账号的 Codex 连接。每个 Agent 请求均不自动重试。睡眠会按需要分步整理；生图需另行开启。</p></article>
+    <article class="card"><h2>电脑使用记录</h2><label class="toggle"><span>记录其他窗口的原始按键<small>保存按键代码，包含在其他应用中键入的内容</small></span><input type="checkbox" data-setting="saveRawInput"></label><label class="toggle"><span>每半小时保存系统截图（仅本机）</span><input type="checkbox" data-setting="saveScreenshots"></label><p class="quiet-note">累计有效使用 30 分钟截一次，阅读、看视频也计时；锁屏或休眠时暂停。截图包含当前所在屏幕的可见内容，可随时关闭。重复画面复用；只有另行开启截图发送，睡眠时才会发送选中的图片。</p><p id="screen-status" class="quiet-note"></p></article><article class="card"><h2>这版的观察范围</h2><p>电脑上的经历来自原始按键和定时截图。也可以在宠物里聊天、主动添加经历或选择文件。</p><button id="clear" class="danger">删除本地经历与整理结果</button></article>
+  </div></section>
+  <div id="activity" class="activity" hidden><span id="activity-copy">正在整理</span><button id="cancel" class="subtle">停止这次处理</button></div>
+  <div id="toast" role="status" class="toast" hidden></div>
+</main>
+<script src="../../../packages/pet-runtime/animation-player.cjs"></script><script src="../../../packages/pet-runtime/sprite-layout.cjs"></script><script src="../../../packages/pet-runtime/character-player.cjs"></script><script src="../../../packages/pet-runtime/pose-director.cjs"></script><script src="pet.js"></script><script src="journey.js"></script><script src="controller.js"></script>
+</body></html>

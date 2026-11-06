@@ -1,0 +1,2 @@
+# Versioned datasets are byte-hashed; do not rewrite their line endings on checkout.
+demo_data/scenarios/** -text

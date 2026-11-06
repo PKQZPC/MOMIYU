@@ -1,0 +1,12 @@
+{
+  "name": "momiyu",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An AI pet shaped by shared experiences.",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {"node": ">=24"},
+  "scripts": {
+    "test": "node --test tests/desktop/*.test.cjs tests/runtime/*.test.cjs tests/windows/*.test.cjs tests/m0/*.test.cjs tests/m0/*.test.mjs",
+    "demo:offline": "node tools/desktop/run-offline-demo.cjs"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1.0",
+  "purpose": "M0 source audit; not installed production dependencies",
+  "sources": [
+    {
+      "name": "focal",
+      "repository": "https://github.com/Haoran2099/focal",
+      "commit": "0ce2eae723efc144249aa84e447e6e16351752c2",
+      "license_path": "LICENSE",
+      "license_sha256": "04df9e97995c51be928085a7e8f216fed6cc7d8670138c88c2aa6e9df9e39ef8",
+      "license_heading": "MIT License"
+    },
+    {
+      "name": "activitywatch-window",
+      "repository": "https://github.com/ActivityWatch/aw-watcher-window",
+      "commit": "10638b2c94e46195f709abd8626cb15f911e99f8",
+      "license_path": "LICENSE.txt",
+      "license_sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "license_heading": "Mozilla Public License Version 2.0"
+    },
+    {
+      "name": "activitywatch-web",
+      "repository": "https://github.com/ActivityWatch/aw-watcher-web",
+      "commit": "fb17330e4e702c4a770a117674e7ac598b68fe3f",
+      "license_path": "LICENSE",
+      "license_sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+      "license_heading": "Mozilla Public License Version 2.0"
+    },
+    {
+      "name": "openadapt-capture",
+      "repository": "https://github.com/OpenAdaptAI/OpenAdapt",
+      "commit": "a016fd67ed28a14ef624f765840b9ab92448e8cc",
+      "license_path": "packages/capture/LICENSE",
+      "license_sha256": "15697a539aa9b371fb741180719e6371f55cc980d3ab243fc1295afc8291fba7",
+      "license_heading": "MIT License"
+    },
+    {
+      "name": "rrweb",
+      "repository": "https://github.com/rrweb-io/rrweb",
+      "commit": "339683f34bf2dd5df2e7cc18fe59fb924b65661b",
+      "license_path": "LICENSE",
+      "license_sha256": "e49e62397b603438476e0d6b5ca3b6e6d4f23a80594e596aff29ac04fa3e1b1c",
+      "license_heading": "MIT License"
+    },
+    {
+      "name": "ufo",
+      "repository": "https://github.com/microsoft/UFO",
+      "commit": "eae3c0a8d168c47cb10df0652e293e092eda1078",
+      "license_path": "LICENSE",
+      "license_sha256": "fd532481d828e13a0b13ccb598e02338a3617740675a862ee6bdc1541b68e93d",
+      "license_heading": "Copyright (c) Microsoft Corporation."
+    }
+  ],
+  "focal_files": [
+    {
+      "path": "experiments_window_based/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experiments_window_based/core.py",
+      "sha256": "5f1d8c212d6fbbbf5fd3a3c6817bfb043a29c31d827bb7d85880da139328f1ea"
+    },
+    {
+      "path": "experiments_window_based/config.py",
+      "sha256": "ea8b63446f6b3d4355ce6d2b3538b0d62b5683dbc2e9fbfb970ac2fcb87850a4"
+    },
+    {
+      "path": "experiments_window_based/focal_method.py",
+      "sha256": "062e7192385f5a9b55fba73ea3ce585c6141b85eec0695f171ca289e6453ce62"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "04df9e97995c51be928085a7e8f216fed6cc7d8670138c88c2aa6e9df9e39ef8"
+    }
+  ]
+}

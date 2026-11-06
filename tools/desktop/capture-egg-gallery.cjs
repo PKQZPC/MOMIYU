@@ -1,0 +1,12 @@
+// A labelled contact sheet of the actual installed assets; not an app demo.
+const {app,BrowserWindow}=require('electron');
+const fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'../..'),out=path.join(root,'.local/artwork/egg-palette/v003');
+app.disableHardwareAcceleration();require('../../apps/desktop/paths.cjs').configurePaths(app,root,{dataDirectory:path.join(out,'gallery-profile')});
+let window;
+app.whenReady().then(async()=>{try{
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'apps/desktop/assets/eggs/v001/manifest.json'))),names={white:'白',green:'绿',purple:'紫',red:'红',blue:'蓝'};
+ const rows=['soft','pearl'].map(style=>'<section><h2>'+(style==='soft'?'柔和款 · 原版白蛋画风':'珠光款 · 珍珠与金属质感')+'</h2><div class="row">'+manifest.files.filter(x=>x.style===style).map(x=>'<figure><img src="data:image/png;base64,'+fs.readFileSync(path.join(root,'apps/desktop/assets/eggs/v001',x.file)).toString('base64')+'"><figcaption>'+names[x.color]+'</figcaption></figure>').join('')+'</div></section>').join('');
+ const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;padding:28px 34px;background:#f5f6f0;color:#334532;font:16px "Microsoft YaHei",sans-serif}h1{font-size:24px;margin:0 0 6px}p{font-size:13px;color:#89927f;margin:0 0 22px}h2{font-size:15px;font-weight:500;margin:0 0 10px}.row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}section+section{margin-top:24px}figure{margin:0;background:#fffef9;border:1px solid #e0e6d7;border-radius:16px;padding:10px;text-align:center}img{display:block;width:100%;height:196px;object-fit:contain}figcaption{font-size:13px;padding:8px 0 3px}</style><h1>MOMIYU · 第一颗蛋</h1><p>两种款式，五种颜色。确认领取后，款式与颜色都会保留。</p>'+rows;
+ const page=path.join(out,'gallery.html');fs.writeFileSync(page,html);window=new BrowserWindow({show:false,width:1180,height:700,useContentSize:true,webPreferences:{offscreen:true,sandbox:true,contextIsolation:true,backgroundThrottling:false}});await window.loadFile(page);await window.webContents.executeJavaScript('Promise.all([...document.images].map(x=>x.decode()))');await new Promise(r=>setTimeout(r,150));const image=await window.webContents.capturePage();fs.writeFileSync(path.join(out,'ten-eggs.png'),image.toPNG(),{flag:'wx'});console.log('Egg contact sheet saved.');
+ }catch(error){fs.writeFileSync(path.join(out,'gallery-error.json'),JSON.stringify({message:error.message}));console.error(error.message);process.exitCode=1;}finally{window?.destroy();app.quit();}});

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "scenario_id": "evolution_journey",
+      "version": "v001",
+      "manifest": "scenarios/evolution_journey/v001/manifest.json",
+      "sha256": "9ea01818a9432835bc03f7c4ac1c9f9ca4a0414d648449d08f6f472c4ab7dbe8"
+    },
+    {
+      "scenario_id": "egg_journey",
+      "version": "v001",
+      "manifest": "scenarios/egg_journey/v001/manifest.json",
+      "sha256": "f6e7225489ae36605e9eef5964a1cacce8b43b0f153e4bd0cc6dc35e1cfb1d04"
+    },
+    {
+      "scenario_id": "skill_practice",
+      "version": "v001",
+      "manifest": "scenarios/skill_practice/v001/manifest.json",
+      "sha256": "7cb69bf742cec5397ff232b2a3f54d67baeaefa555b851504dd97867e9304809"
+    }
+  ]
+}

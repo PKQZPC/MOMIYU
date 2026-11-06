@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scenario_id": "evolution_journey",
+  "dataset_version": "v001",
+  "provenance": "synthetic",
+  "description": "A month of ordinary observation, creative interests, project work, correction and sharing; no prescribed pet design.",
+  "record_count": 12,
+  "coverage": [
+    "experience intake",
+    "sleep organization",
+    "growth with actual current/history images",
+    "one referenced image generation",
+    "continuity review",
+    "coherent appearance publication"
+  ],
+  "files": [
+    {
+      "path": "sessions/01-observation.json",
+      "sha256": "b18be48de651afb6c9853d107a22b9f51efdfa981521f47d47e73cd306abb2c8"
+    },
+    {
+      "path": "sessions/02-solving-problems.json",
+      "sha256": "063e77e88b9352247151508df1733bf0045c57980cc6778d6abbdc497b67df98"
+    },
+    {
+      "path": "sessions/03-continuing-life.json",
+      "sha256": "89e8d5844e9fb2261b392d8c551a475814c6423c70131a63d33d69e85eb4e6c9"
+    }
+  ]
+}

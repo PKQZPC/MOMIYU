@@ -1,0 +1,9 @@
+{
+  "session_id": "observation-and-expression",
+  "records": [
+    {"id":"ej001-01","occurred_at":"2026-10-05T12:30:00Z","description":"整理旅行照片时，我逐张比较了河流、山路和小镇的画面，按地点与拍摄顺序整理相册。后来给朋友讲了照片里不同路线的故事。","process":"浏览照片，比较场景，按地点整理，再回看顺序并讲述。","object":{"type":"photo_album","name":"秋日出行"},"statistics":"这次整理持续 42 分钟，整理了 26 张照片。"},
+    {"id":"ej001-02","occurred_at":"2026-10-08T11:00:00Z","description":"我读了一组关于森林与夜空的插画短篇，收藏了喜欢的作品，隔天又回看其中几幅的光线和构图。","process":"阅读作品，收藏，再回看画面。","object":{"type":"illustrated_stories","name":"林间与星夜"},"statistics":"两次阅读与回看合计约 55 分钟；这是该组作品的记录，不代表全部阅读习惯。"},
+    {"id":"ej001-03","occurred_at":"2026-10-11T13:20:00Z","description":"朋友问起相册的整理方法，我先问他想按行程还是按主题查看，再演示了两种排列方式，最后保留了便于找回地点的那一版。","process":"了解对方需要，展示两种组织方式，比较后选择，说明选择原因。","object":{"type":"conversation","name":"相册整理交流"},"statistics":"一次交流，持续约 18 分钟。"},
+    {"id":"ej001-04","occurred_at":"2026-10-13T12:00:00Z","description":"晚间听器乐时，我把窗边的景色画成了一张小草图，试过几种颜色后留下了较安静的一版。画完后把草图和对应照片一起保存。","process":"观察场景，画草图，试色，比较并保存。","object":{"type":"sketch","name":"窗边的夜晚"},"statistics":"一次绘画活动，持续约 35 分钟。"}
+  ]
+}

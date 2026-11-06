@@ -1,0 +1,5 @@
+Use case: identity-preserve.
+Asset type: transparent sprite for a Windows desktop companion's initial egg.
+Input image 1 defines the egg's shape, framing, flowing engraved pattern and diamond emblem. Input image 2 is the user's green palette and material reference.
+Create the GREEN member of the same egg series. Preserve the original egg silhouette, front three-quarter orientation, pattern layout and emblem position. Use softly luminous jade-green pearlescent shell, distinct polished champagne-gold flowing trim and a faceted green gemstone in a gold setting. Match the reference's material separation, ivory-tinted highlights and shaded green depth. Keep metal, shell and gemstone visibly distinct; do not tint everything green.
+Deliver one complete isolated egg centered on true transparent background, generous clear padding, no floor, no cast ground shadow, no text, no border, no checkerboard. Preserve internal dimensional shading and specular highlights. No creature, limbs, face, hatch cracks, scene or additional ornaments. This is a finished colored egg asset, not a comparison sheet.

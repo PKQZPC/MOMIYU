@@ -1,0 +1,59 @@
+.egg-picker { padding: 4px 0 18px; }
+.egg-picker > span { display: block; margin-bottom: 10px; font-size: 11px; color: #74836c; }
+.egg-options { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.egg-style-heading { font-size: 11px; color: #677a5e; margin: 12px 0 7px; font-weight: 500; }
+.egg-swatch { display: flex; flex-direction: column; align-items: center; padding: 5px 3px 8px; border: 1px solid #dbe2d2; border-radius: 10px; background: #f5f7f0; color: #465841; font-size: 11px; }
+.egg-swatch img { display: block; width: 100%; height: 86px; object-fit: contain; }
+.egg-swatch:hover { background: #edf2e5; }
+.egg-swatch[aria-pressed=true] { border-color: #78916c; box-shadow: 0 0 0 1px #78916c; background: #eaf0e1; }
+.egg-confirm { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.egg-confirm small { font-size: 11px; color: #8c6b5b; }
+.journey-version { padding: 16px 0; border-top: 1px solid #e1e6d9; }
+.journey-version-heading, .journey-action-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.journey-version-heading h3 { margin: 0; font-size: 14px; }
+.journey-badge { font-size: 9px; color: #677e5a; padding: 3px 7px; border-radius: 12px; background: #edf2e5; white-space: nowrap; }
+.journey-reason { margin: 6px 0 !important; }
+.journey-evidence { padding: 5px 0; border: 0; }
+/* The reference occupies 30%; state and action information use the remaining 70%. */
+.journey-body { display: grid; grid-template-columns: minmax(100px, 30%) minmax(0, 1fr); gap: 16px; align-items: start; margin-top: 12px; }
+.journey-hero { margin: 0; text-align: center; background: #f3f5ed; border-radius: 12px; padding: 8px; }
+.journey-hero img { display: block; width: 100%; height: 150px; object-fit: contain; }
+.journey-hero figcaption { font-size: 9px; color: #8b9682; margin: 5px 0; }
+.journey-content { min-width: 0; }
+.journey-states { border-bottom: 1px solid #e6ebdd; padding-bottom: 8px; margin-bottom: 10px; }
+.journey-states p { font-size: 11px; margin: 3px 0 !important; line-height: 1.6; }
+.journey-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 10px; }
+.journey-action { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 8px; padding: 10px; border: 1px solid #e0e7d8; border-radius: 10px; align-items: center; }
+.journey-action canvas { display: block; width: 76px; height: 76px; }
+.journey-action-copy { min-width: 0; }
+.journey-action strong { font-size: 12px; }
+.journey-action p { font-size: 11px; line-height: 1.6; margin: 5px 0 !important; }
+.journey-action small { display: block; font-size: 10px; line-height: 1.5; color: #89947e; }
+.journey-action-reason { color: #89947e !important; }
+.journey-play { background: #e8efdf; color: #557046; border-radius: 6px; padding: 5px 9px; font-size: 10px; margin-top: 5px; }
+@media (max-width: 500px) {
+ .egg-options { gap: 5px; }
+ .egg-swatch img { height: 65px; }
+ .journey-body { grid-template-columns: 90px minmax(0, 1fr); gap: 10px; }
+ .journey-hero img { height: 110px; }
+ .journey-action { grid-template-columns: 1fr; }
+ .journey-action canvas { width: 64px; height: 54px; }
+}
+
+.signed-out .sidebar,.signed-out #open-accounts { display:none; }
+.signed-out main { margin:0; }
+.signed-out header { justify-content:flex-end; }
+.signed-out #breadcrumb,.signed-out #profile-mode { display:none; }
+#accounts { max-width:460px; }
+.account-row { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; padding:12px 0; border-bottom:1px solid #e5eadf; }
+.account-row strong { flex:1; min-width:0; overflow-wrap:anywhere; }
+.account-row small { color:#687960; }
+.account-actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:18px; }
+#hatch-celebration { width:min(390px,calc(100% - 36px)); border:1px solid #e3e9d8; border-radius:24px; background:#fffdf5; color:#314330; padding:24px 26px 28px; text-align:center; box-shadow:0 20px 80px #25352238; }
+#hatch-celebration::backdrop { background:#26392e80; }
+#hatch-title { font-size:30px; margin:6px 0; }
+.hatch-glow { display:grid; place-items:center; height:170px; background:radial-gradient(circle,#f7e7a8 0, #f8f2d4 38%, transparent 70%); }
+.hatch-glow img { width:100%;height:100%;min-height:0;object-fit:contain; }
+#hatch-celebration[open] { animation:hatch-arrival .45s ease-out both; }
+@keyframes hatch-arrival { from {opacity:0;transform:translateY(10px) scale(.96)} to {opacity:1;transform:none} }
+@media(prefers-reduced-motion:reduce){#hatch-celebration[open]{animation:none}}

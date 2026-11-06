@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "appearance_id": "sample_appearance_v1",
+  "bindings": {
+    "base.idle": {"pose": 0},
+    "base.greet": {"pose": 2},
+    "sleep.rest": {"asset": "sample_sleep"},
+    "sleep.wake": {"pose": 5}
+  },
+  "missing": ["sleep.enter.transition_frames", "sleep.wake.transition_frames", "base.greet.inbetween_frames"],
+  "review": "Visual inventory of the original atlas and its independent sleep image. Poses are held states, not consecutive animation frames."
+}

@@ -1,0 +1,115 @@
+{
+  "purpose": "M0 interactive-pet source review; not production adoption",
+  "sources": [
+    {
+      "repository": "https://github.com/coglabss/deskcat",
+      "commit": "b5718472223bdb23d01abf92dae7bbd8d7de39b1",
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "3801b6d123d89385ab948f54ef615339240eb0af7cca5ce8a406437631f9342e"
+        },
+        {
+          "path": "README.md",
+          "sha256": "c7b5f41706c0bf21bc8c7240cc4739bc17230243a46ad30fee3ace2e18ed9f74"
+        },
+        {
+          "path": "package.json",
+          "sha256": "0990d3a4c4a9605ed355904a436dfbc682854cbb69e37b2a529bcef91eaf90ea"
+        },
+        {
+          "path": "src/main/overlay-window.js",
+          "sha256": "3a66ba668a50b4fb96b9d18f01e4ac9c7aa99039e2cd34d57f9d86301c7b959e"
+        },
+        {
+          "path": "src/main/passthrough.js",
+          "sha256": "047eb04b7bceea98d1383ff40bf9998c93059ba99145e0a7de21d1fe32e02306"
+        },
+        {
+          "path": "src/main/tray.js",
+          "sha256": "8ffc2becf1b712c9c0958c0ee4a5491b359d38b6a3e04d105e35954dae3f15d1"
+        },
+        {
+          "path": "src/renderer/animation-player.js",
+          "sha256": "6a217b401600fc9acb46596bae0cee4e7d843f34b6dc12ee0d210f3b93917838"
+        },
+        {
+          "path": "src/renderer/input-handler.js",
+          "sha256": "f4d0f8f8bb82e8baa307f3cb653eafe2177d0beaaff02c107c5a248d17ea406c"
+        },
+        {
+          "path": "src/renderer/sprite-config.js",
+          "sha256": "73b731522aafbd9ec5692e509acc3db7b8b947b2a1d65e8007fef50c11e59bb5"
+        },
+        {
+          "path": "test/animation-player.test.js",
+          "sha256": "f4cee413693ad31cf175871bba6394572388a243e04e89f1c6e5eac756eccebc"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/TonyNa-code/desktop-pet",
+      "commit": "d4f7992bec15adaa2687a1635a86864b5c822a09",
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "e36565d1a5831a392ecf1eabb713fcbd5d0bd879af7a68bd22bb1d1db5510d03"
+        },
+        {
+          "path": "README.md",
+          "sha256": "4d910b4bbcb2016a8d05271f5355ea3e540673c654373ad254f85e7979732262"
+        },
+        {
+          "path": "ASSET_NOTICE.md",
+          "sha256": "d20f9be3f0eb5e04fabaa436cdd4123ab4ea2f333fc26bbfeead6f506c47f1a2"
+        },
+        {
+          "path": "package.json",
+          "sha256": "03bdc5e8e8e538a6230e3ebdaf4b43e83b186daf13f0eadf30c9c79e6cb425a0"
+        },
+        {
+          "path": "src/main.js",
+          "sha256": "dc99698d446212d22995ead3df67e211c918cf6575c5bc0ac96e00620637be73"
+        },
+        {
+          "path": "src/renderer.js",
+          "sha256": "da6ec87151db3536f917c67d6518ca0d33b2be36af938e051de5c75768a3fb98"
+        },
+        {
+          "path": "src/character-import.js",
+          "sha256": "e32c00947c280a20736031e9c8285612d25580b6686ef6be97dbc7986d6a8418"
+        },
+        {
+          "path": "tests/character-import.test.js",
+          "sha256": "0ad3e1a3be5a6cbe1772baca7747be7eaac8a8c44b61b0d99c8779dfefdc9c62"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/moeru-ai/airi",
+      "commit": "08d0f01a014bc801924a02b34476bcf275f7bbaf",
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9"
+        },
+        {
+          "path": "README.md",
+          "sha256": "3b67c96d824aa60c38cb0f918530691b943628b14456cd9433e84ce82ee247dc"
+        },
+        {
+          "path": "apps/stage-tamagotchi/src/main/libs/electron/window-manager/reusable.ts",
+          "sha256": "f3293067d98f99a66de2be06a98e4e77b79ab3dd963f20bbbb81d13ec5996d57"
+        },
+        {
+          "path": "apps/stage-tamagotchi/src/main/windows/shared/window.ts",
+          "sha256": "d48765641b8075312ee9018d4163b232a6ede6b9a1fe4caa118c8095a189a74e"
+        },
+        {
+          "path": "apps/stage-tamagotchi/src/renderer/composables/use-chat-floating-click-through.ts",
+          "sha256": "785d1036cd4618eed6a356afd86fe7f9fdd6c1da644f9f1f2ba547be6a43c419"
+        }
+      ]
+    }
+  ]
+}

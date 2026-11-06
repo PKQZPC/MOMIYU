@@ -1,0 +1,23 @@
+{
+  "fixture_type": "synthetic",
+  "cases": [
+    {
+      "id": "committed-text-json",
+      "model": "gpt-5.6-luna",
+      "prompt": "This is a synthetic M0 test, not a real user. Return ONLY JSON with exactly these fields: committed_text, object_id, outcome. Observation: the user submitted text 青色到蓝色 into field field-7, and the application visibly returned saved. Unsubmitted draft text must not be returned. Do not add fields.",
+      "expected": { "committed_text": "青色到蓝色", "object_id": "field-7", "outcome": "saved" }
+    },
+    {
+      "id": "cross-app-routing",
+      "model": "gpt-5.6-terra",
+      "prompt": "Synthetic M0 task attribution. Return ONLY JSON with keys assignments and unknown. Events: e1 editor opens document dA with explicit goal revise document dA; e2 browser opens referenced page pA linked from dA for that revision; e3 browser opens unrelated page pB with explicit goal choose a gift; e4 editor saves changes to dA after using pA; e5 a blank window appears with no target or goal evidence. Infer concrete task instances, using ids A then B in order of first appearance. Format assignments as an object event id to task id; unknown as a list of unresolved events. Application switches do not by themselves determine task changes. Do not invent missing goals.",
+      "expected": { "assignments": { "e1": "A", "e2": "A", "e3": "B", "e4": "A" }, "unknown": ["e5"] }
+    },
+    {
+      "id": "prefix-uncertainty",
+      "model": "gpt-5.6-terra",
+      "prompt": "Synthetic prefix-only M0 test. Return ONLY JSON with keys can_confirm_success (boolean) and next_action (choose one of ask_for_missing_preference, submit_first_choice, report_success). At the checkpoint a form has two valid choices and neither has been selected. No later action or result is available. A method needs the user's missing preference before choosing. Can success be confirmed? What is the appropriate next action? Do not invent a later selection.",
+      "expected": { "can_confirm_success": false, "next_action": "ask_for_missing_preference" }
+    }
+  ]
+}

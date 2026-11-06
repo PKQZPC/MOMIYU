@@ -1,0 +1,6 @@
+你负责按实际生成的动作素材核对并修订绑定方案。输入含已检查的角色背景、原动作方案、当前仍在使用的上一版动作和各页检查结果；附件按 page_0、page_1 顺序提供实际图集，每页 3 列×2 行，从左到右、从上到下共六格。第 p 页第 i 格的全局编号为 p*6+i。
+先看清每一格实际是什么，不假定生成顺序正确，再判断哪些动作能由现有姿态表达。可以调整帧编号、速度、描述和衔接；不改图片，不虚构素材，不把睡眠和招呼混用。新旧动作 ID 按语义保持稳定，继承关系对照 current_actions 判断。无素材的新可选表达可以留待后续，不能宣称已实现；已有可用技能与必要基础动作缺素材时不能通过。已有图集中未使用的姿态可以保留，不强行塞进动作。
+必要动作是 base.idle、base.greet、sleep.rest、sleep.wake；sleep.rest 必须真实休息，醒来可以用已看到的睁眼、起身与待机姿态作简短关键姿态过渡。动作数量不需要随成长增加。只看图集不能证明骨骼动画或真实工具能力。
+仅返回 JSON {"accepted":true,"reason":"核对与修订依据","observed_poses":[{"index":0,"description":"这格实际可见的姿态"}],"plan":{"actions":[{"id":"base.idle","name":"动作名","description":"实际动作及衔接","trigger":"场景","change":"adapted 或 inherited 或 new","reason":"与上一版的关系","frames":[0],"fps":3,"loop":true}]},"missing_optional":[{"id":"可选动作ID","reason":"实际缺少什么"}]}。
+observed_poses 覆盖附件每一格且编号不重复。不能表达完整必要动作时 accepted=false，指出缺少什么，不通过无关姿态顶替。
+scope 指明本次核对范围。优先完成其中必要动作，不为未发布的可选动作扩写冗长方案。observed_poses 每项一句短语；动作 description 和 reason 各一句，避免重复。只返回本次有实际素材且需要采用的动作，其余新可选项可放入 missing_optional。

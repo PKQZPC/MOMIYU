@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>MOMIYU Capture Verification</title>
+<style>body{font:20px sans-serif;max-width:900px;margin:45px}input,button,a{font:20px sans-serif;margin:12px;padding:10px}</style>
+<h1>Weekend route planning</h1><p>Compare routes by distance, accessibility and weather.</p>
+<form id="search"><label>Route query <input aria-label="Route query"></label><button>Submit search</button></form>
+<p id="result" aria-live="polite">No query submitted.</p>
+<button id="filter">Only accessible routes</button><p id="selection">All routes are visible.</p>
+<a href="#route-details">Open route details</a><h2 id="route-details">Route details</h2><p>Riverside loop: 3 km, paved path, shelter at halfway point.</p>
+<button id="protect">Show protected input</button><div id="protected" hidden><label>Password <input type="password" value="PASSWORD_CAPTURE_SENTINEL"></label></div>
+<script>document.querySelector('#search').onsubmit=e=>{e.preventDefault();const input=document.querySelector('input');document.querySelector('#result').textContent='Submitted route: '+input.value+'. Result: riverside loop and woodland path.';input.value=''};document.querySelector('#filter').onclick=()=>document.querySelector('#selection').textContent='Filter applied: riverside loop only.';document.querySelector('#protect').onclick=()=>document.querySelector('#protected').hidden=false;</script></html>

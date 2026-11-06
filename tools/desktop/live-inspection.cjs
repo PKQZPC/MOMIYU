@@ -1,0 +1,19 @@
+// Optional read-only telemetry for a native-input audit of the normal profile.
+// No IPC invocation, fake model, synthetic DOM events or private text capture.
+const fs=require('node:fs'),path=require('node:path');
+exports.start=({panel,pet,runtime,root})=>{
+ const out=path.join(root,'.local/desktop/live-audit');fs.mkdirSync(out,{recursive:true});let busy=false;
+ const windowEvents=[];for(const type of ['show','hide','minimize','restore','close','focus','blur'])panel.on(type,()=>{windowEvents.push({type,at:Date.now()});if(windowEvents.length>20)windowEvents.shift();});
+ pet.webContents.executeJavaScript(`(()=>{globalThis.__auditEvents=[];for(const type of ['pointerdown','pointerup','click','dblclick'])document.addEventListener(type,e=>{__auditEvents.push({type,target:e.target.id||e.target.tagName,x:e.clientX,y:e.clientY});if(__auditEvents.length>16)__auditEvents.shift();},{capture:true,passive:true});})()`);
+ const timer=setInterval(async()=>{if(busy||panel.isDestroyed()||pet.isDestroyed())return;busy=true;try{
+  const [petView,panelView]=await Promise.all([
+   pet.webContents.executeJavaScript('(()=>{const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}};return {actor:petActor.state(),viewport:{width:innerWidth,height:innerHeight},canvas:rect(document.getElementById("pet-canvas")),controlsVisible:getComputedStyle(document.getElementById("pet-controls")).visibility==="visible",controls:Object.fromEntries(["open","abilities","rest","quit"].map(id=>[id,rect(document.getElementById(id))]))}})()'),
+   panel.webContents.executeJavaScript('(()=>{const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}},selectors={settings:"[data-page=settings]",chat:"[data-page=chat]",growth:"[data-page=growth]",size:"#pet-size",reset:"#reset-pet-size",model:"[data-setting=modelEnabled]",editor:"#chat-input",send:"#chat-form button"};return {viewport:{width:innerWidth,height:innerHeight},ready:document.readyState,page:document.querySelector(".page.active")?.id,learnedSkillCount:document.querySelectorAll("#skills article").length,candidateSkillCount:document.querySelectorAll("#skill-candidates article").length,focused:document.activeElement?.id,messages:document.querySelectorAll(".message").length,editorEmpty:document.getElementById("chat-input").value.length===0,sizeValue:document.getElementById("pet-size").value,controls:Object.fromEntries(Object.entries(selectors).map(([k,v])=>[k,rect(document.querySelector(v))]))}})()')
+  ]);
+  const settings=runtime.store.settings();const value={generated_at:new Date().toISOString(),process_id:process.pid,pet:{hwnd:String(pet.getNativeWindowHandle().readBigUInt64LE()),bounds:pet.getBounds(),visible:pet.isVisible(),...petView},panel:{hwnd:String(panel.getNativeWindowHandle().readBigUInt64LE()),bounds:panel.getBounds(),visible:panel.isVisible(),...panelView},settings:{petScale:settings.petScale,resting:settings.resting,modelEnabled:settings.modelEnabled},busy:runtime.active?.kind||null};
+  value.events=await pet.webContents.executeJavaScript('globalThis.__auditEvents||[]');
+  value.panel.windowEvents=windowEvents;
+  value.journey=await panel.webContents.executeJavaScript('(()=>{const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}};return {buttons:[...document.querySelectorAll("#appearance-history button")].map(e=>({egg:e.dataset.egg||null,rect:rect(e)})),actions:[...document.querySelectorAll(".journey-action")].map(e=>e.dataset.actionId),canvases:document.querySelectorAll(".journey-action canvas").length}})()');
+  fs.writeFileSync(path.join(out,'state.tmp'),JSON.stringify(value));fs.renameSync(path.join(out,'state.tmp'),path.join(out,'state.json'));
+ }catch{}finally{busy=false;}},200);timer.unref();return ()=>clearInterval(timer);
+};

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scenario_id": "skill_practice",
+  "dataset_version": "v001",
+  "provenance": "synthetic",
+  "extends_scenario": "egg_journey/v001",
+  "purpose": "Independent later observations and actual local-tool trials of an existing candidate; never rewrites prior growth inputs.",
+  "record_count": 6,
+  "files": [
+    {
+      "path": "sessions/01-observed-explanation.json",
+      "batch_id": "01-observed-explanation",
+      "sha256": "7f203dcd0cd79f2528b77c4899aecaf0f92b6f04c890c122506440c408fafaa6"
+    },
+    {
+      "path": "sessions/02-observed-new-case.json",
+      "batch_id": "02-observed-new-case",
+      "sha256": "22a7611fb7cffb8a07eb87012895ee31a3c88c50b8c902b74354c0878f8bae31"
+    }
+  ]
+}

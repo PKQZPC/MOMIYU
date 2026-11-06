@@ -1,0 +1,29 @@
+# Local previews and generated QA recordings.
+**/.local/
+**/__pycache__/
+**/.pytest_cache/
+**/node_modules/
+**/.venv/
+.env
+.env.*
+!.env.example
+
+
+# Generated review outputs are not source assets.
+/demos/pet-animation/preview*.png
+/demos/pet-animation/preview*.gif
+/tests/fixtures/m0/image-validation/generated-*/
+
+# Application databases are local runtime data.
+**/momiyu.sqlite
+**/momiyu.sqlite-*
+**/*.sqlite
+**/*.sqlite-*
+**/accounts.json
+
+# Private development discussions and execution history stay on the workstation.
+/development-logs/
+/SYSTEM_DESIGN.md
+
+# User-provided local intake; canonical artwork is under assets/brand/.
+/apps/desktop/霓虹萌宠MOMIYU图标.png

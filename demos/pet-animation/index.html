@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>MOMIYU · 和 MIMO 待一会儿</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>.motion-list{font-size:11px;color:#7c876f;letter-spacing:.5px}.motion-list i{font-style:normal;color:#bec5b3;padding:0 7px}</style>
+</head>
+<body>
+  <svg class="icon-definitions" aria-hidden="true"><defs>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.6 14.1A8.6 8.6 0 0 1 9.9 3.4 8.6 8.6 0 1 0 20.6 14.1Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C7 2 3 8 5 15c2 7 14 6 15-11Z"/><path d="M4 21 16 9"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6C8 3 4 4 3 5v14c4-2 7-1 9 1 2-2 5-3 9-1V5c-4-2-7-1-9 1Zm0 0v14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 10 7-10 7Z"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 2 7M4 4v7h7"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+  </defs></svg>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="MOMIYU 首页"><span class="brand-mark">✦</span><span>MOMIYU<small>a little life, beside you</small></span></a>
+      <div class="top-meta"><span class="local-dot"></span> 本地动作演示 <span class="top-separator">/</span> 01</div>
+    </header>
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">THE COMPANION ROOM <span>—</span> 陪伴小室</p><h1>和 MIMO，<span>待一会儿。</span></h1><p class="intro-copy">不赶时间。看看它发呆、打盹，或是施展一点新本领。</p></div>
+        <button id="tour" class="button tour-button"><svg><use href="#i-play"/></svg><span>看一段小日常</span></button>
+      </section>
+      <div class="experience-grid">
+        <section class="pet-room" aria-label="宠物动作展示">
+          <div class="room-top"><span class="room-label"><i id="state-dot"></i><span id="state-label">安静陪着你</span></span><span class="room-number">MIMO / 示例角色</span></div>
+          <div class="room-glow"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="room-lines" aria-hidden="true"></div><div class="floor" aria-hidden="true"></div>
+          <div id="speech" class="speech" role="status" aria-live="polite">我在呢。要一起待一会儿吗？</div>
+          <canvas id="pet-canvas" tabindex="0" role="button" aria-label="点点 MIMO，或按回车和它打招呼">MIMO 的动作预览，请使用支持 Canvas 的浏览器。</canvas>
+          <div id="asset-error" class="asset-error" hidden>小家伙的素材没有加载成功，请保留 assets 文件夹并重新打开。</div>
+          <div class="room-bottom"><span id="room-hint">轻轻点它一下，打个招呼</span><span><i></i> 无需联网</span></div>
+        </section>
+        <aside class="sidebar">
+          <section class="companion-card">
+            <div class="section-caption">一起相处 <span>COMPANION</span></div>
+            <h2>现在，做点什么？</h2>
+            <div class="action-grid">
+              <button class="action-button" id="greet"><span class="action-glyph">✧</span><span>摸摸脑袋<small>收到一点小回应</small></span></button>
+              <button class="action-button" id="rest"><svg><use href="#i-moon"/></svg><span id="rest-copy">打个小盹<small>睡觉，也可以只是休息</small></span></button>
+              <button class="action-button" id="look"><span class="action-glyph">⌕</span><span>看看这边<small>脑袋和耳朵一起转过来</small></span></button>
+              <button class="action-button" id="stretch"><svg><use href="#i-sun"/></svg><span>伸个懒腰<small>小爪子也舒展开来</small></span></button>
+            </div>
+          </section>
+          <section class="skills-section">
+            <div class="section-caption">小小本领 <span>示例技能</span></div>
+            <article class="skill-card literature-card">
+              <div class="skill-heading"><span class="skill-icon"><svg><use href="#i-book"/></svg></span><span><h3>文献寻踪</h3><small>让线索，慢慢聚在一起。</small></span><span class="skill-no">01</span></div>
+              <p>MIMO 会循着研究方向寻找文献，把散落的线索整理成清晰的阅读清单。</p>
+              <button class="skill-trigger" data-skill="literature"><span>发动技能</span><svg><use href="#i-arrow"/></svg></button>
+            </article>
+            <article class="skill-card garden-card">
+              <div class="skill-heading"><span class="skill-icon"><svg><use href="#i-leaf"/></svg></span><span><h3>灵感拾叶</h3><small>把小想法，收进一座花园。</small></span><span class="skill-no">02</span></div>
+              <p>MIMO 会收拢零散的想法，分门别类，帮你留住那些刚刚冒芽的灵感。</p>
+              <button class="skill-trigger" data-skill="garden"><span>发动技能</span><svg><use href="#i-arrow"/></svg></button>
+            </article>
+          </section>
+        </aside>
+      </div>
+      <section class="controls-panel" aria-label="演示设置">
+        <div class="look-control"><span class="control-caption">这次，动动小爪子</span><span class="motion-list">挥爪 <i>·</i> 歪头 <i>·</i> 伸懒腰 <i>·</i> 打盹</span></div>
+        <div class="outcome-control"><label class="control-caption" for="outcome">这次模拟的结果</label><select id="outcome"><option value="completed">顺利完成</option><option value="partial">完成一部分</option><option value="failed">遇到困难</option></select></div>
+        <button id="cancel-task" class="button cancel-button" disabled><svg><use href="#i-stop"/></svg>取消任务</button>
+        <button id="reset" class="reset-button" aria-label="重置演示"><svg><use href="#i-reset"/></svg></button>
+      </section>
+      <section class="moment-panel" aria-label="当前演示状态"><div class="moment-icon"><svg><use href="#i-star"/></svg></div><div><span class="control-caption">此刻的小事</span><p id="moment-text">MIMO 正在安静呼吸。没有任务，也可以好好待着。</p></div><span id="phase-tag" class="phase-tag">日常待机</span></section>
+    </main>
+    <footer><span>MOMIYU <i>·</i> 一点点成长，一直在身边。</span><p>仅演示角色与动作。技能与任务结果均为模拟，不采集数据，不执行真实任务。</p></footer>
+  </div>
+  <script src="state.js"></script><script src="app.js"></script>
+</body>
+</html>

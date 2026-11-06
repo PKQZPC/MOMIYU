@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:momiyu:contracts:0.1.0",
+  "title": "MOMIYU separated domain records",
+  "type": "object",
+  "required": ["schema_version", "kind", "id", "version", "body"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "kind": {"enum": ["raw_observation", "content_version", "process_evidence", "workflow_attribution", "user_understanding", "shared_memory", "skill_version", "pet_asset_version", "analysis_work", "task_execution", "model_manifest"]},
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "integer", "minimum": 1},
+    "body": {"type": "object"}
+  },
+  "allOf": [
+    {"if":{"properties":{"kind":{"const":"raw_observation"}}},"then":{"properties":{"body":{"$ref":"#/$defs/raw_observation"}}}},
+    {"if":{"properties":{"kind":{"const":"content_version"}}},"then":{"properties":{"body":{"$ref":"#/$defs/content_version"}}}},
+    {"if":{"properties":{"kind":{"const":"process_evidence"}}},"then":{"properties":{"body":{"$ref":"#/$defs/process_evidence"}}}},
+    {"if":{"properties":{"kind":{"const":"workflow_attribution"}}},"then":{"properties":{"body":{"$ref":"#/$defs/workflow_attribution"}}}},
+    {"if":{"properties":{"kind":{"const":"user_understanding"}}},"then":{"properties":{"body":{"$ref":"#/$defs/user_understanding"}}}},
+    {"if":{"properties":{"kind":{"const":"shared_memory"}}},"then":{"properties":{"body":{"$ref":"#/$defs/shared_memory"}}}},
+    {"if":{"properties":{"kind":{"const":"skill_version"}}},"then":{"properties":{"body":{"$ref":"#/$defs/skill_version"}}}},
+    {"if":{"properties":{"kind":{"const":"pet_asset_version"}}},"then":{"properties":{"body":{"$ref":"#/$defs/pet_asset_version"}}}},
+    {"if":{"properties":{"kind":{"const":"analysis_work"}}},"then":{"properties":{"body":{"$ref":"#/$defs/analysis_work"}}}},
+    {"if":{"properties":{"kind":{"const":"task_execution"}}},"then":{"properties":{"body":{"$ref":"#/$defs/task_execution"}}}},
+    {"if":{"properties":{"kind":{"const":"model_manifest"}}},"then":{"properties":{"body":{"$ref":"#/$defs/model_manifest"}}}}
+  ],
+  "$defs": {
+    "ref": {"type":"object","required":["id","version"],"additionalProperties":false,"properties":{"id":{"type":"string","minLength":1},"version":{"type":"integer","minimum":1}}},
+    "refs": {"type":"array","items":{"$ref":"#/$defs/ref"},"uniqueItems":true},
+    "lifecycle": {"enum":["candidate","effective","historical","withdrawn"]},
+    "raw_observation": {"type":"object","required":["source_id","actor","observed_at","sequence","operation","object_ref","content_refs"],"additionalProperties":false,"properties":{"source_id":{"type":"string"},"actor":{"enum":["user","pet","system"]},"observed_at":{"type":"string","format":"date-time"},"sequence":{"type":"integer","minimum":0},"operation":{"enum":["content_observed","text_submitted","message_sent","document_saved","object_selected","navigation","result_observed"]},"object_ref":{"$ref":"#/$defs/ref"},"content_refs":{"$ref":"#/$defs/refs"}}},
+    "content_version": {"type":"object","required":["source_id","available_at","created_at","dependencies","representation","blob_ref","completeness"],"additionalProperties":false,"properties":{"source_id":{"type":"string"},"available_at":{"type":"string","format":"date-time"},"created_at":{"type":"string","format":"date-time"},"dependencies":{"$ref":"#/$defs/refs"},"representation":{"enum":["text","structure","image","summary"]},"blob_ref":{"type":["string","null"]},"completeness":{"enum":["complete","partial","summary_only","deleted"]}}},
+    "process_evidence": {"type":"object","required":["observation_ref","before_refs","after_refs","gaps"],"additionalProperties":false,"properties":{"observation_ref":{"$ref":"#/$defs/ref"},"before_refs":{"$ref":"#/$defs/refs"},"after_refs":{"$ref":"#/$defs/refs"},"gaps":{"type":"array","items":{"type":"string"}}}},
+    "workflow_attribution": {"type":"object","required":["evidence_refs","workflow_ids","reason","certainty"],"additionalProperties":false,"properties":{"evidence_refs":{"$ref":"#/$defs/refs"},"workflow_ids":{"type":"array","items":{"type":"string"}},"reason":{"type":"string"},"certainty":{"enum":["supported","tentative","unresolved","ordinary_experience"]}}},
+    "user_understanding": {"type":"object","required":["claim","state","evidence_refs","supersedes"],"additionalProperties":false,"properties":{"claim":{"type":"string"},"state":{"$ref":"#/$defs/lifecycle"},"evidence_refs":{"$ref":"#/$defs/refs"},"supersedes":{"$ref":"#/$defs/refs"}}},
+    "shared_memory": {"type":"object","required":["event_description","state","evidence_refs"],"additionalProperties":false,"properties":{"event_description":{"type":"string"},"state":{"$ref":"#/$defs/lifecycle"},"evidence_refs":{"$ref":"#/$defs/refs"}}},
+    "skill_version": {"type":"object","required":["state","scope","method_ref","evidence_uses","tool_requirements"],"additionalProperties":false,"properties":{"state":{"$ref":"#/$defs/lifecycle"},"scope":{"type":"string"},"method_ref":{"$ref":"#/$defs/ref"},"evidence_uses":{"type":"array","items":{"type":"object","required":["ref","use"],"additionalProperties":false,"properties":{"ref":{"$ref":"#/$defs/ref"},"use":{"enum":["learning","comparison","regression","execution"]}}}},"tool_requirements":{"type":"array","items":{"type":"string"}}}},
+    "pet_asset_version": {"type":"object","required":["state","pet_state_ref","reference_ref","action_refs","runtime_ref"],"additionalProperties":false,"properties":{"state":{"$ref":"#/$defs/lifecycle"},"pet_state_ref":{"$ref":"#/$defs/ref"},"reference_ref":{"$ref":"#/$defs/ref"},"action_refs":{"$ref":"#/$defs/refs"},"runtime_ref":{"$ref":"#/$defs/ref"}}},
+    "analysis_work": {"type":"object","required":["batch_id","role","state","input_refs","dependency_refs","checkpoint_ref","reserved_tokens"],"additionalProperties":false,"properties":{"batch_id":{"type":"string"},"role":{"type":"string"},"state":{"enum":["pending","running","awaiting_check","eligible","published","waiting","invalidated"]},"input_refs":{"$ref":"#/$defs/refs"},"dependency_refs":{"$ref":"#/$defs/refs"},"checkpoint_ref":{"anyOf":[{"$ref":"#/$defs/ref"},{"type":"null"}]},"reserved_tokens":{"type":"integer","minimum":0}}},
+    "task_execution": {"type":"object","required":["skill_ref","authority_ref","state","result_refs","actor"],"additionalProperties":false,"properties":{"skill_ref":{"$ref":"#/$defs/ref"},"authority_ref":{"$ref":"#/$defs/ref"},"state":{"enum":["pending","running","completed","partial","failed","canceled","uncertain"]},"result_refs":{"$ref":"#/$defs/refs"},"actor":{"const":"pet"}}},
+    "model_manifest": {"type":"object","required":["purpose","checkpoint","skill_ref","input_refs","mode"],"additionalProperties":false,"properties":{"purpose":{"type":"string"},"checkpoint":{"type":"string","format":"date-time"},"skill_ref":{"$ref":"#/$defs/ref"},"input_refs":{"$ref":"#/$defs/refs"},"mode":{"enum":["prediction","comparison","learning","maintenance","growth"]}}}
+  }
+}

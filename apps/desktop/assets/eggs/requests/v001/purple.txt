@@ -1,0 +1,5 @@
+Use case: identity-preserve.
+Asset type: transparent sprite for a Windows desktop companion's initial egg.
+Input image 1 defines the egg's shape, framing, flowing engraved pattern and diamond emblem. Input image 2 is the user's purple palette and material reference.
+Create the PURPLE member of the same egg series. Preserve the original egg silhouette, front three-quarter orientation, pattern layout and emblem position. Use a lustrous lavender pearlescent shell with soft violet depth, warm rose-gold flowing trim and a sharply faceted amethyst-purple gemstone in a rose-gold setting. Match the reference's delicate material texture and dimensional lighting. Keep metal, shell and gemstone visibly distinct; do not tint everything purple.
+Deliver one complete isolated egg centered on true transparent background, generous clear padding, no floor, no cast ground shadow, no text, no border, no checkerboard. Preserve internal dimensional shading and specular highlights. No creature, limbs, face, hatch cracks, scene or additional ornaments. This is a finished colored egg asset, not a comparison sheet.

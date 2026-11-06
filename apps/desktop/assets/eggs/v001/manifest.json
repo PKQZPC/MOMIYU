@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "version": "v001",
+  "source": "User-directed reference-based generation using the unchanged imagegen CLI, gpt-image-1.5 medium, zero automatic retries.",
+  "files": [
+    {
+      "style": "soft",
+      "color": "white",
+      "file": "soft/white.png",
+      "sha256": "da974b5b9866b83d11b1591d3dfb30dd2db42ef21a0968233905917e9a4a9003",
+      "source_sha256": "da974b5b9866b83d11b1591d3dfb30dd2db42ef21a0968233905917e9a4a9003",
+      "preparation": "original-white-unmodified"
+    },
+    {
+      "style": "soft",
+      "color": "green",
+      "file": "soft/green.png",
+      "sha256": "26ef71d2a6e6a2f16fedfebcb7cc87acda8871ba7ee5613afae1f477f96b40b3",
+      "source_sha256": "f8bce6357bbde3a7d00a894d62b8a9ac379febab2320b8b322df9538b9fdc04b",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1113,
+      "height": 1314,
+      "removed_detached_pixels": 16738,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "soft",
+      "color": "purple",
+      "file": "soft/purple.png",
+      "sha256": "557d5ffe59e3a9a3d84e83f3112903aad4acaaae954a422900273909cb59df2c",
+      "source_sha256": "9284a1c145d13b90126438cc9ba25e124286a53733c4d5a2704258b10e5fdddb",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1131,
+      "height": 1349,
+      "removed_detached_pixels": 22250,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "soft",
+      "color": "red",
+      "file": "soft/red.png",
+      "sha256": "5badfec4d5f3ba613c247ce05e06a16428fcca4860085caafb9a2cb4a190c7fc",
+      "source_sha256": "340afb253affe5fcde2a897f5b5e913f7ac0c801ca89a27dc09c29108291a861",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1132,
+      "height": 1336,
+      "removed_detached_pixels": 11692,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "soft",
+      "color": "blue",
+      "file": "soft/blue.png",
+      "sha256": "5cd24fad81da8ff253c9a80e7ff18d4da3283380adc055a56d9936ddfd7218e2",
+      "source_sha256": "bfe58abf840dcced2341416d217ee7cc0c1a2fcd8a62e88aaaf6c4d45c3f98db",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1120,
+      "height": 1306,
+      "removed_detached_pixels": 9288,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "pearl",
+      "color": "white",
+      "file": "pearl/white.png",
+      "sha256": "4b44595bd4c4652e82c8ad8c88e9bde2f7cc87d4ecda27309903e4b9563ca813",
+      "source_sha256": "35edbbb9c956adf65716028e03a1fecaa8f02b9a40a191e2ac5d8ec8a84ecafc",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1133,
+      "height": 1367,
+      "removed_detached_pixels": 16270,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "pearl",
+      "color": "green",
+      "file": "pearl/green.png",
+      "sha256": "d7bcabe68d9dbc37c133e5fb0b6c2ad8158107c5b190de280fa6f3f70618e6ee",
+      "source_sha256": "11ba728f31b09dd9e886efba655d5a5575800931eafb46aecd18ca9eafc1840b",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1150,
+      "height": 1367,
+      "removed_detached_pixels": 11028,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "pearl",
+      "color": "purple",
+      "file": "pearl/purple.png",
+      "sha256": "56cfbef570a0bb09a8fca73c00a7b40c2cb4dc3ff82e5dbda775edc4dfcfe26e",
+      "source_sha256": "067988e6ad275860a720438f7a6cceaf56fb1b0935c1dadb21a6e87af12eef0f",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1150,
+      "height": 1367,
+      "removed_detached_pixels": 20032,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "pearl",
+      "color": "red",
+      "file": "pearl/red.png",
+      "sha256": "9ba9665276b732affe5a24e9f17942869d14d486111eab96f798a12bf7b087d4",
+      "source_sha256": "f5937266786847c84dc85005f2b02ccbb7b711d220aeeecfcf9f2b2ac7bedb35",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1150,
+      "height": 1367,
+      "removed_detached_pixels": 7486,
+      "preparation": "largest-alpha-component-v1"
+    },
+    {
+      "style": "pearl",
+      "color": "blue",
+      "file": "pearl/blue.png",
+      "sha256": "e040d26bdd6f100b921e365029125455bf76c57a31953c73cb107acf380af07e",
+      "source_sha256": "a1149605993e321e1db2a5afc4736754a9cda06298dd6af68ee699d925ff57de",
+      "source_width": 1150,
+      "source_height": 1367,
+      "width": 1150,
+      "height": 1367,
+      "removed_detached_pixels": 16817,
+      "preparation": "largest-alpha-component-v1"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scenario_id": "egg_journey",
+  "dataset_version": "v001",
+  "provenance": "synthetic",
+  "record_count": 11,
+  "files": [
+    {
+      "path": "sessions/01-first-days.json",
+      "sha256": "4a42ce8b33633b2a6795ad442e0a8aedc7a2ccd89ce461b5542b1c325362f25c",
+      "batch_id": "01-first-days"
+    },
+    {
+      "path": "sessions/02-continuing-experiences.json",
+      "sha256": "1eb000fcd674acd885065760b740c8c840a48c89c037616d0383352ea632ac5a",
+      "batch_id": "02-continuing-experiences"
+    },
+    {
+      "path": "sessions/03-deepening-methods.json",
+      "sha256": "f3607e187bab53afba43a687516e3034d822c77941b6d6ccd5aa45e9b374dc15",
+      "batch_id": "03-deepening-methods"
+    },
+    {
+      "path": "sessions/04-new-experiences.json",
+      "sha256": "a1a9f8f54e92b2c4f32a644a3b9361900a06ad0cf6082e970e4e22dc1c353d60",
+      "batch_id": "04-new-experiences"
+    }
+  ],
+  "coverage": [
+    "egg selection",
+    "accumulation without mandatory change",
+    "individual hatchling",
+    "continued evolution",
+    "overall action compatibility",
+    "versioned action comparison"
+  ],
+  "expected_outcomes": "A demonstration target of hatching and two later changes; actual AI decisions remain authoritative."
+}

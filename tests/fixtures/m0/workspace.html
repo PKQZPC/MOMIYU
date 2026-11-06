@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>MOMIYU controlled M0 fixture</title>
+<style>body{font:16px sans-serif;margin:30px}section{border:1px solid #aaa;padding:16px;margin:12px}label{display:block}input{margin:8px}#result{white-space:pre-wrap}</style>
+<h1>MOMIYU synthetic workspace</h1>
+<section data-object-id="doc-a" data-version="1"><h2>Document A</h2><p id="document">A controlled document for color comparisons.</p><a id="reference" href="#reference-a">Reference A</a></section>
+<form id="edit-form"><label>Committed text<input id="text" data-object-id="field-a" value=""></label><label>Password excluded<input id="password" type="password"></label><button id="save" type="submit">Save</button></form>
+<output id="result" aria-live="polite">No change saved</output>
+<section id="chat" data-conversation-id="conversation-a"><p data-message-id="message-a" data-speaker="other" data-time="2026-10-27T00:00:00Z">Can we use the shorter version?</p><p data-message-id="message-b" data-speaker="user" data-reply-to="message-a" data-time="2026-10-27T00:01:00Z">Yes, keep the heading.</p></section>
+<script>
+// Fixture collector: explicit submit only, no keystroke, input or draft listener.
+const observations=[]; let collectionEnabled=true; let modelEnabled=false;
+const localOnly=new Set(['fixture-local']);
+function collect(event){if(collectionEnabled)observations.push(event)}
+function modelInput(events){return modelEnabled?events.filter(e=>!localOnly.has(e.source_id)):[]}
+document.querySelector('#edit-form').addEventListener('submit',event=>{event.preventDefault();const before=document.querySelector('#document').textContent;const value=document.querySelector('#text').value;const section=document.querySelector('[data-object-id="doc-a"]');const version=Number(section.dataset.version)+1;document.querySelector('#document').textContent=value;section.dataset.version=String(version);document.querySelector('#result').textContent='Saved version '+version;collect({source_id:'fixture-page',type:'text_saved',object_id:'doc-a',before,value,after:value,version,result:'saved'})});
+window.fixture={observations,collect,modelInput,setCollection:value=>collectionEnabled=value,setModel:value=>modelEnabled=value};
+</script></html>

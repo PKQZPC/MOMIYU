@@ -1,0 +1,22 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path');
+const {Runtime}=require('../../services/local-runtime/src/runtime.cjs');
+const {startReviewServer}=require('../../tools/desktop/review-model-server.cjs');
+const parent=path.resolve(__dirname,'../../.local/live-model-review-tests');fs.mkdirSync(parent,{recursive:true});
+const off=()=>({start(){},stop(){},snapshot(){return {status:'off'};}});
+test('real sleep service sends its own request through HTTP and commits only the returned evidence',async t=>{
+ const dir=fs.mkdtempSync(path.join(parent,'case-')),queue=path.join(dir,'queue');
+ const server=await startReviewServer({port:0,apiKey:'test-only',directory:queue});t.after(()=>server.close());
+ const config=path.join(dir,'config.yaml');fs.writeFileSync(config,'host: 127.0.0.1\nport: '+server.port+'\napi-keys:\n  - test-only\n');
+ const r=new Runtime(path.join(dir,'profile'),{startObservers:false,observerFactory:off,screenFactory:off});t.after(()=>r.close());r.chooseEgg('ivory');
+ r.settings({saveNotes:true,sendNotes:true,modelEnabled:true,proxyConfig:config});r.note('A genuine service request fixture');
+ const sleeping=r.sleep();const request=path.join(queue,'001/request.json');
+ for(let i=0;i<100&&!fs.existsSync(request);i++)await new Promise(resolve=>setTimeout(resolve,10));
+ assert.ok(fs.existsSync(request));const sent=JSON.parse(fs.readFileSync(request)),rows=JSON.parse(sent.payload.input);
+ assert.equal(rows[0].content,'A genuine service request fixture');assert.ok(sent.payload.instructions.startsWith('你负责整理'));
+ assert.equal(r.store.jobs()[0].status,'running');assert.equal(r.store.life().entries.length,0);
+ const response={summary:'A returned analysis',experiences:[{description:'An inspected service fixture',source_refs:[rows[0].id]}],user_understanding:[],workflow_candidates:[],skill_candidates:[],growth:{should_change:false,reason:'Accumulate'}};
+ fs.writeFileSync(path.join(queue,'001/response.json'),JSON.stringify({text:JSON.stringify(response)}));
+ const result=await sleeping;assert.equal(result.mode,'analyzed');assert.equal(r.store.jobs()[0].status,'completed');assert.equal(r.store.pendingCount(),0);
+ assert.equal(JSON.parse(fs.readFileSync(path.join(queue,'001/status.json'))).status,'responded');
+});

@@ -1,0 +1,21 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{randomUUID}=require('node:crypto');
+const {Runtime}=require('../../services/local-runtime/src/runtime.cjs');
+const root=path.resolve(__dirname,'../..'),base=path.join(root,'.local/skill-material-tests');fs.mkdirSync(base,{recursive:true});const off=()=>({start(){},stop(){},snapshot(){return {status:'off'};}});
+function fixture(t,{reject=false,fail=false}={}){
+ const dir=fs.mkdtempSync(path.join(base,'case-'));let images=0,models=0;
+ const material=fs.readFileSync(path.join(root,'demos/pet-animation/assets/body-poses.png'));
+ const r=new Runtime(dir,{observerFactory:off,screenFactory:off,imageGenerator:async()=>{images++;if(fail)throw new Error('fixture_failure');return material;},model:async(s,system,input)=>{models++;const value=JSON.parse(input);return {text:JSON.stringify(system.startsWith('你负责为宠物的一项技能')?{poses:Array.from({length:6},(_,index)=>({index,description:'受控姿态'+index})),actions:value.required_actions.map((id,i)=>({id,name:'测试动作'+i,description:'受控用途',trigger:'对应状态',reason:'受控表达',change:'new',frames:[i],fps:3,loop:i===1}))}:{accepted:!reject,reason:'受控核对',action_checks:value.plan.actions.map(a=>({id:a.id,accepted:!reject,reason:'对应姿态'}))})};}});
+ r.settings({saveNotes:true,sendNotes:true,modelEnabled:true,imageGeneration:true});r.chooseEgg('ivory');const row=r.note('已观察的资料整理过程'),job=r.store.startJob([row]);r.store.finishJob(job,{status:'completed',result:{},usage:{}},r.store.epoch());
+ const id=randomUUID();r.store.db.prepare('INSERT INTO skill_versions VALUES(?,?,?,?,?,?)').run(id,randomUUID(),1,job,1,JSON.stringify({name:'线索收拢',description:'整理获准资料',method:'读取并按依据归类',source_refs:[row.id]}));
+ const appearance=randomUUID(),relative='demos/pet-animation/assets/body-poses.png';r.store.db.prepare('INSERT INTO appearance_versions VALUES(?,?,?,?,?)').run(appearance,job,'active',relative,JSON.stringify({stage:'juvenile',parent_id:'egg_ivory',design_path:relative,material_pages:[relative],actions:{actions:[],bindings:{}}}));
+ t.after(()=>{r.close();assert.equal(path.dirname(dir),base);fs.rmSync(dir,{recursive:true,force:true});});return {r,id,appearance,counts:()=>({images,models})};
+}
+test('egg-origin pet prepares dedicated skill assets without evolving or announcing acquisition',async t=>{
+ const f=fixture(t),before=f.r.store.appearanceHistory().length;const result=await f.r.prepareSkill(f.id);assert.equal(result.mode,'ready');assert.equal(f.r.store.currentAppearance().id,f.appearance);assert.equal(f.r.store.appearanceHistory().length,before);assert.equal(f.r.store.skill(f.id).assessment,null);assert.equal(f.r.store.skill(f.id).assets.base_appearance_id,f.appearance);assert.equal(f.r.store.skillAppearanceData(f.id).pages.length,1);const counts=f.counts();await f.r.prepareSkill(f.id);assert.deepEqual(f.counts(),counts);f.r.store.cleanDerivedFiles();assert.ok(f.r.store.skillAppearanceData(f.id).pages[0].startsWith('data:image/png;base64,'));
+});
+test('failed material call is not retried and failed review does not expose assets',async t=>{
+ const f=fixture(t,{fail:true});await assert.rejects(f.r.prepareSkill(f.id));await assert.rejects(f.r.prepareSkill(f.id),/skill_material_review_required/);assert.equal(f.counts().images,1);assert.equal(f.r.store.skill(f.id).assets,null);const g=fixture(t,{reject:true});assert.equal((await g.r.prepareSkill(g.id)).mode,'rejected');assert.equal(g.r.store.skill(g.id).assets,null);g.r.store.cleanDerivedFiles();const input=JSON.parse(g.r.store.db.prepare('SELECT input FROM skill_material_jobs WHERE version_id=?').get(g.id).input);assert.ok(fs.existsSync(path.join(root,input.page)));
+});
+test('revoked source and a later appearance cannot reuse or prepare the old skill material',async t=>{
+ const f=fixture(t);await f.r.prepareSkill(f.id);f.r.settings({sendNotes:false});await assert.rejects(f.r.prepareSkill(f.id),/skill_source_not_authorized/);f.r.settings({sendNotes:true});f.r.store.db.prepare('UPDATE appearance_versions SET id=? WHERE id=?').run(randomUUID(),f.appearance);assert.equal(f.r.store.skill(f.id).assets,null);assert.throws(()=>f.r.store.skillAppearanceData(f.id),/skill_assets_pending/);await assert.rejects(f.r.prepareSkill(f.id),/stale_candidate/);
+});

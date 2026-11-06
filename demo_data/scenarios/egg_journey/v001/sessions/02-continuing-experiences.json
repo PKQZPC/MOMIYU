@@ -1,0 +1,27 @@
+{
+  "id": "02-continuing-experiences",
+  "title": "逐渐持续的经历",
+  "records": [
+    {
+      "id": "02-continuing-experiences-1",
+      "occurred_at": "2026-09-04T19:00:00+08:00",
+      "description": "用户整理旅行照片，先按地点分组，发现拍摄时间有偏差，查看行程后纠正归类。",
+      "process": "先按地点初分；核对行程；发现时间偏移；修正分组并保留原片。",
+      "statistics": "本周三次整理，共约 110 分钟；这里记录第三次的过程。"
+    },
+    {
+      "id": "02-continuing-experiences-2",
+      "occurred_at": "2026-09-07T21:00:00+08:00",
+      "description": "用户反复观看水彩动画短片，记录柔和的留白和色彩变化，尝试画一张小卡片。",
+      "process": "观看片段，暂停观察色彩，草绘，擦除过满的笔触后重新留白。",
+      "statistics": "一周内四次相关观看和绘画，共约 150 分钟。"
+    },
+    {
+      "id": "02-continuing-experiences-3",
+      "occurred_at": "2026-09-10T18:30:00+08:00",
+      "description": "用户把照片做成送给朋友的小册子，比较两个排版，删去重复内容并完成分享。",
+      "process": "比较排版，删除重复页，校对地点说明，导出并分享。",
+      "statistics": "本次约 45 分钟；完成一份小册子。"
+    }
+  ]
+}
