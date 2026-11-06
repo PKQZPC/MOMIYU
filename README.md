@@ -7,6 +7,16 @@
 <p align="center">English · <a href="README.zh-CN.md">简体中文</a></p>
 
 <p align="center">
+  <a href="https://github.com/PKQZPC/MOMIYU/actions/workflows/ci.yml"><img src="https://github.com/PKQZPC/MOMIYU/actions/workflows/ci.yml/badge.svg" alt="Windows tests and offline demo"></a>
+  <a href="demo_data/README.md"><img src="https://img.shields.io/badge/offline_demo-no_API_key_needed-6b835f" alt="Offline demo — no API key needed"></a>
+  <img src="https://img.shields.io/badge/preview-v0.1.0-8b78ad" alt="Early preview v0.1.0">
+</p>
+
+<p align="center">
+  <a href="#demo">Watch the demo</a> · <a href="#try-momiyu">Try it locally</a> · <a href="https://github.com/PKQZPC/MOMIYU/discussions">Share an idea</a>
+</p>
+
+<p align="center">
   <strong>An AI pet that grows with your experiences and learns your way of doing things.</strong>
 </p>
 
@@ -115,12 +125,18 @@ What would your companion learn from spending time with you? Share a growth
 idea, a skill you wish it could learn, or a moment you would like it to remember.
 Ideas, bug reports, and contributions are welcome.
 
-Join a conversation or report a bug in [Issues](https://github.com/PKQZPC/MOMIYU/issues).
-For bugs, include what you did, what happened, and your Windows version.
+Bring ideas, questions, and experiences to
+[Discussions](https://github.com/PKQZPC/MOMIYU/discussions).
+For a reproducible bug or a concrete feature request, use
+[Issues](https://github.com/PKQZPC/MOMIYU/issues). For bugs, include what you did,
+what happened, and your Windows version.
 
 Have an idea for MOMIYU, want to talk about AI companions, or interested in
 building something together? I'd love to hear from you at
 [zhoupengcheng0219@gmail.com](mailto:zhoupengcheng0219@gmail.com).
+
+Interested in where MOMIYU goes next? Star the project and help shape it in
+the discussions.
 
 ## Documentation
 

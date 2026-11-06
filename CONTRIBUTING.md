@@ -1,7 +1,7 @@
 # Contributing
 
 Ideas, fixes, and experiments are welcome. Discuss substantial changes in
-[Issues](https://github.com/PKQZPC/MOMIYU/issues) so we can agree on the behavior
+[Discussions](https://github.com/PKQZPC/MOMIYU/discussions) so we can agree on the behavior
 before changing it. For questions and collaboration, contact
 [zhoupengcheng0219@gmail.com](mailto:zhoupengcheng0219@gmail.com).
 

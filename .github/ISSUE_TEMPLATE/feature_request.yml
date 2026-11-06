@@ -1,0 +1,23 @@
+name: Share a feature idea
+description: Suggest a new way for MOMIYU to grow, learn, or help.
+title: "[Idea] "
+body:
+  - type: textarea
+    id: experience
+    attributes:
+      label: What would you like your companion to do?
+      description: Describe a moment from everyday life where this would be useful or delightful.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: How do you imagine it working?
+      description: A small example or sketch is welcome. There is no need for a technical design.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else you would like to share?
+      description: Please use fictional examples rather than personal conversations or captured data.

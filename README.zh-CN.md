@@ -7,6 +7,16 @@
 <p align="center"><a href="README.md">English</a> · 简体中文</p>
 
 <p align="center">
+  <a href="https://github.com/PKQZPC/MOMIYU/actions/workflows/ci.yml"><img src="https://github.com/PKQZPC/MOMIYU/actions/workflows/ci.yml/badge.svg" alt="Windows 测试与离线演示"></a>
+  <a href="demo_data/README.md"><img src="https://img.shields.io/badge/offline_demo-no_API_key_needed-6b835f" alt="离线演示无需 API key"></a>
+  <img src="https://img.shields.io/badge/preview-v0.1.0-8b78ad" alt="早期预览 v0.1.0">
+</p>
+
+<p align="center">
+  <a href="#演示">观看 Demo</a> · <a href="#开始体验">本地体验</a> · <a href="https://github.com/PKQZPC/MOMIYU/discussions">交流想法</a>
+</p>
+
+<p align="center">
   <strong>一只随共同经历成长、从你的做事方式中学习技能的 AI 宠物。</strong>
 </p>
 
@@ -74,9 +84,11 @@ python tools/m0/prepare-electron.py
 
 如果它一直陪着你，会学会什么？欢迎分享你期待的成长、希望它掌握的技能，或想让它记住的某个时刻，也欢迎分享实际使用感受、反馈问题或参与贡献。
 
-可以到 [Issues](https://github.com/PKQZPC/MOMIYU/issues) 参与讨论或反馈问题。反馈 bug 时，请说明操作步骤、实际结果和 Windows 版本。
+欢迎到 [Discussions](https://github.com/PKQZPC/MOMIYU/discussions) 聊想法、提问题、分享体验。明确的功能建议或可复现的问题可以提交到 [Issues](https://github.com/PKQZPC/MOMIYU/issues)；反馈 bug 时，请说明操作步骤、实际结果和 Windows 版本。
 
 对 MOMIYU 有新想法，想聊聊 AI 宠物，或希望一起做些有趣的东西？欢迎给我写信：[zhoupengcheng0219@gmail.com](mailto:zhoupengcheng0219@gmail.com)。很期待听到你的想法。
+
+如果你也期待它接下来会长成什么样，欢迎点个 Star，并一起参与讨论，让它慢慢长得更好。
 
 ## 文档
 
